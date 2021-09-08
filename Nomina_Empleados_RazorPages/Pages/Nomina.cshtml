@@ -1,0 +1,50 @@
+﻿@page
+@model Nomina_Empleados_RazorPages.Pages.NominaModel
+@{
+
+    List<NominaModel> Listaempleado = new List<NominaModel>();
+    Listaempleado.Add(new NominaModel() { Nombre = "Manuel", Apellido = "Garcia", Cargo = "Gerente TI", SalarioBruto = 90384.89});
+    Listaempleado.Add(new NominaModel() { Nombre = "Rodrigo", Apellido = "Villanueva", Cargo = "DBA", SalarioBruto = 79586.57 });
+    Listaempleado.Add(new NominaModel() { Nombre = "Tomas", Apellido = "Martinez", Cargo = "Programador Senior", SalarioBruto = 60438.69 });
+    Listaempleado.Add(new NominaModel() { Nombre = "Melinda", Apellido = "Gutierrez", Cargo = "Programador Junior", SalarioBruto = 45829.67 });
+    Listaempleado.Add(new NominaModel() { Nombre = "Michael", Apellido = "Matos", Cargo = "Tester", SalarioBruto = 40568.44});
+
+
+
+}
+
+<div class="text-center">
+    <h1>Nomina Empleado</h1>
+</div>
+<br />
+<br />
+<br />
+<div>
+    <table class="table">
+        <tr>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Cargo</td>
+            <td>Salario Bruto</td>
+            <td>Descuento AFP</td>
+            <td>Descuento ARS</td>
+            <td>Descuento ISR</td>
+            <td>Salario Neto</td>
+        </tr>
+        @foreach (var item in Listaempleado)
+	{
+    <tr>
+        <td>@item.Nombre</td>
+        <td>@item.Apellido</td>
+        <td>@item.Cargo</td>
+        <td>@item.SalarioBruto</td>
+        <td>@Math.Round(item.AFP())</td>
+        <td>@Math.Round(item.SFS())</td>
+        <td>@Math.Round(item.ISR())</td>
+        <td>@Math.Round(item.SalarioNeto)</td>
+
+    </tr>
+	}
+        
+    </table>
+</div>
